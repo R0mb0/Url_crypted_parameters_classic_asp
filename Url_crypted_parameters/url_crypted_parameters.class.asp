@@ -14,6 +14,7 @@ Class url_crypted
 	
 	sub class_terminate()
 		my_password = Null 
+        my_dictionary = Null 
 	end sub
 
     'Function to add parameters to pass from url '
@@ -40,7 +41,7 @@ Class url_crypted
         my_password = password
     End Function 
 
-    'Function to get passord to use to crypt
+    'Function to get passord to use to crypt'
     Public Function get_password()
         get_password = my_password
     End Function 
@@ -78,7 +79,8 @@ Class url_crypted
         get_current_url = url 
     End Function
 
-    Public Function set_parameters_to_url(url)
+    'Function to add crypted paramters to url' 
+    Public Function set_parameters_to_url(ByVal url)
         If my_dictionary.get_dimension() > 0 Then 
             If is_password_setted() Then  
                 Dim temp 
@@ -104,13 +106,14 @@ Class url_crypted
         End If 
     End Function 
 
-    'Function to redirect to another page
-    Public Function redirect(url)
+    'Function to redirect to another page'
+    Public Function redirect(ByVal url)
     %>
     <SCRIPT language='javascript'>window.open('<%=url%>');</SCRIPT>
     <%
     End Function
 
+    'Function to decryt params from current url'
     Public Function decrypt_actual_params()
         'Reset to avoid problems
         Set my_dictionary = new dictionary
@@ -131,7 +134,8 @@ Class url_crypted
         Next 
     End Function 
 
-    Public Function decrypt_url_params(url)
+    'Function to decrypt params from a url'
+    Public Function decrypt_url_params(ByVal url)
         'Reset to avoid problems
         Set my_dictionary = new dictionary
         Dim params 
