@@ -89,10 +89,10 @@ Class url_crypted
                 my_url = my_url + "?"
                 For Each temp in my_dictionary.get_dictionary()
                     If is_first Then 
-                        my_url = my_url + EncryptData temp(0), my_password + "=" + EncryptData temp(1), my_password
+                        my_url = my_url + EncryptData(temp(0), my_password) + "=" + EncryptData(temp(1), my_password)
                         is_first = false
                     Else 
-                        my_url = my_url + "&" + EncryptData temp(0), my_password + "=" + EncryptData temp(1), my_password
+                        my_url = my_url + "&" + EncryptData(temp(0), my_password) + "=" + EncryptData(temp(1), my_password)
                     End If 
                 Next 
                 set_parameters_to_url = my_url 
@@ -104,5 +104,51 @@ Class url_crypted
         End If 
     End Function 
 
+    'Function to redirect to another page
+    Public Function redirect(url)
+    %>
+    <SCRIPT language='javascript'>window.open('<%=url%>');</SCRIPT>
+    <%
+    End Function
+
+    Public Function decrypt_actual_params()
+        'Reset to avoid problems
+        Set my_dictionary = new dictionary
+        Dim params 
+        Dim temp
+        Dim temp_array()
+        Dim index 
+        index = 0 
+        For Each params in Split(Request.ServerVariables("QUERY_STRING"),"&",-1,1)
+            For Each temp in Split(params,"=",-1,1)
+                Redim Preserve temp_array(index)
+                temp_array(index) = temp
+                index = index + 1
+            Next 
+        Next 
+        For index = 0 To UBound(temp_array) Step 2
+            my_dictionary.add_element DecryptData(temp_array(index), my_password), DecryptData(temp_array(index + 1), my_password)
+        Next 
+    End Function 
+
+    Public Function decrypt_url_params(url)
+        'Reset to avoid problems
+        Set my_dictionary = new dictionary
+        Dim params 
+        Dim temp
+        Dim temp_array()
+        Dim index 
+        index = 0 
+        For Each params in Split(Split(url,"?",-1,1)(1),"&",-1,1)
+            For Each temp in Split(params,"=",-1,1)
+                Redim Preserve temp_array(index)
+                temp_array(index) = temp
+                index = index + 1
+            Next 
+        Next 
+        For index = 0 To UBound(temp_array) Step 2
+            my_dictionary.add_element DecryptData(temp_array(index), my_password), DecryptData(temp_array(index + 1), my_password)
+        Next 
+    End Function 
 End Class 
 %>

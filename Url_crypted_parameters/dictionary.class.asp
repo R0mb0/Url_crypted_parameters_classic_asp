@@ -47,7 +47,7 @@ Dim my_dictionary
 
 	'Function to get dictionary dimension'
 	Function get_dimension()
-  		get_dimension = UBound(my_dictionary)
+  		get_dimension = UBound(my_dictionary)+1
 	End Function
 
 	'Funtion to check if a key has been used'
@@ -303,10 +303,10 @@ Dim my_dictionary
   		Dim temp
   		Dim temp_index
   		temp_index = 0
-  		Response.Write("------Dictionary items------ <br><br>")
+  		Response.Write("------Parameters------ <br><br>")
   		For Each temp In my_dictionary
-    		Response.Write("Index: " & temp_index & "<br>")
-    		Response.Write("Key: " & temp(0) & "<br>")
+    		'Response.Write("Index: " & temp_index & "<br>")
+    		Response.Write("Id: " & temp(0) & "<br>")
     		Response.Write("Value: " & temp(1) & "<br>")
     		Response.Write("------ <br>")
   		temp_index = temp_index + 1
@@ -315,7 +315,7 @@ Dim my_dictionary
 
 	'Function to get the entire dictionary'
 	Public Function get_dictionary()
-		If get_dimension() > 0
+		If get_dimension() > 0 Then 
 			get_dictionary = my_dictionary
 		Else 
 			Call Err.Raise(vbObjectError + 10, "dictionary.class - get_dictionary", "The dictionary is empty")
