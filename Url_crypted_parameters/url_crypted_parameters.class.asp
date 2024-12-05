@@ -20,7 +20,12 @@ Class url_crypted
     'Function to add parameters to pass from url '
     Public Function add_paramater(ByVal id, ByVal value)
         my_dictionary.add_element id, value
-    End Function 
+    End Function
+
+    'Function to change paramter value by id'
+    Public Function change_parameter(ByVal id, ByVal value)
+	my_dictionary.set_value_from_key(id,value)
+     End Function
 
     'Function to remove parameters by id from paramters to pass from url '
     Public Function remove_paramater_by_id(ByVal id)
