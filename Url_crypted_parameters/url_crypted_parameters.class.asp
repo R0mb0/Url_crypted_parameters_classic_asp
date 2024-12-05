@@ -24,7 +24,7 @@ Class url_crypted
 
     'Function to change paramter value by id'
     Public Function change_parameter(ByVal id, ByVal value)
-	my_dictionary.set_value_from_key(id,value)
+	my_dictionary.set_value_from_key id, value
      End Function
 
     'Function to remove parameters by id from paramters to pass from url '
