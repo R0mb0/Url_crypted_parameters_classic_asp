@@ -16,7 +16,7 @@ This class needs: `rijndael.asp` and `dictionary.class.asp` to work correctly, t
 
   - Set the password to use for crypting -> `Public Function set_password(ByVal password)`
   - Get the setted password -> `Public Function get_password()`
-  - Check if password il setted -> `Public Function is_password_setted()`
+  - Check if password is setted -> `Public Function is_password_setted()`
   - Add parameter to crypt -> `Public Function add_paramater(ByVal id, ByVal value)`
   - Change parameter value from id -> `Public Function change_parameter(ByVal id, ByVal value)`
   - Remove parameters -> `Public Function remove_paramater_by_id(ByVal id)`
