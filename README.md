@@ -35,7 +35,7 @@ This class needs: `rijndael.asp` and `dictionary.class.asp` to work correctly, t
 > From `Test.asp`
 
 1. Initialize the class
-   ```
+   ```asp
    <%@LANGUAGE="VBSCRIPT"%>
    <!--#include file="url_crypted_parameters.class.asp"-->
    <%
@@ -45,12 +45,12 @@ This class needs: `rijndael.asp` and `dictionary.class.asp` to work correctly, t
     url.set_password("Banana")
    ```
 2. Add params to crypt in URL
-   ```
+   ```asp
     url.add_paramater "id", 1328
     url.add_paramater "password","blablabla"
    ```
 3. Generate URL with crypted params
-   ```
+   ```asp
     Dim link
     link = url.set_parameters_to_url("test2.asp")
    %>
@@ -61,7 +61,7 @@ This class needs: `rijndael.asp` and `dictionary.class.asp` to work correctly, t
 > From `Test2.asp`
 
 1. Initialize the class
-   ```
+   ```asp
    <%@LANGUAGE="VBSCRIPT"%>
    <!--#include file="url_crypted_parameters.class.asp"-->
    <%
@@ -71,11 +71,11 @@ This class needs: `rijndael.asp` and `dictionary.class.asp` to work correctly, t
     url.set_password("Banana")
    ```
 2. Decrypt page params
-   ```
+   ```asp
     url.decrypt_actual_params()
    ```
 3. Access information
-   ```
+   ```asp
     Response.Write("Id value: " & url.get_parameter_value("id") & "<br>")
    <%
    ```
