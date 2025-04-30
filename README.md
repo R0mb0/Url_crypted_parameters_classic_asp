@@ -79,3 +79,9 @@ This class needs: `rijndael.asp` and `dictionary.class.asp` to work correctly, t
     Response.Write("Id value: " & url.get_parameter_value("id") & "<br>")
    <%
    ```
+
+  <picture>
+    <source media="(prefers-color-scheme: dark)"srcset="https://github.com/R0mb0/Not_made_by_AI/blob/main/Badge/SVG/NotMadeByAIDark.svg">
+    <source media="(prefers-color-scheme: light)"srcset="https://github.com/R0mb0/Not_made_by_AI/blob/main/Badge/SVG/NotMadeByAILight.svg">
+    <img alt="Not made by AI" src="https://github.com/R0mb0/Not_made_by_AI/blob/main/Badge/SVG/NotMadeByAIDefault.svg">
+  </picture>
